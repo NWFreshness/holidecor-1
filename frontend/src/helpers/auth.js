@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// auth.js is not used in our app. Decided to use hooks instead. See useLogin, useLogout, useRegister in hooks folder
+
 const API_URL = "/api/users/";
 
 //Register user
