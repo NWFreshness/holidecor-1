@@ -6,7 +6,7 @@ const Comment = require("../models/commentModel");
 // @desc Get user houses
 // @route GET /api/tickets
 // @access Private
-const getHouses = asyncHandler(async (req, res) => {
+const getUserHouses = asyncHandler(async (req, res) => {
   //get user using the id in the JWT
   const user = await User.findById(req.user.id);
 
@@ -17,6 +17,10 @@ const getHouses = asyncHandler(async (req, res) => {
 
   const houses = await House.find({ user: req.user.id });
 
+  res.status(200).json(houses);
+});
+const getHouses = asyncHandler(async (req, res) => {
+  const houses = await House.find({});
   res.status(200).json(houses);
 });
 

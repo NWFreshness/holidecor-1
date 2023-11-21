@@ -10,7 +10,7 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 
-router.route("/").get(protect, getHouses).post(protect, createHouse);
+router.route("/").get(getHouses).post(protect, createHouse);
 router
   .route("/:id")
   .get(getHouse)

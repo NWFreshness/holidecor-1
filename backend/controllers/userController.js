@@ -17,6 +17,10 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("Please include all fields");
   }
 
+  if (password !== confirmPassword) {
+    res.status(400);
+    throw new Error("Passwords don't match");
+  }
   // Find if user already exists
   const userExists = await User.findOne({ email });
 
@@ -85,6 +89,7 @@ const getMe = asyncHandler(async (req, res) => {
     email: req.user.email,
     name: req.user.name,
   };
+
   const comments = await Comment.find({ user: req.user._id });
   const data = { user, comments };
   res.status(201).json(data);
